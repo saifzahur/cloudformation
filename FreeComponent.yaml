@@ -20,8 +20,9 @@ Resources:
     Properties:
       SubnetId: !Ref subnetPublic1
 
-outputs:
+Outputs:
   VPCid:
+
     Value: !Ref newVPC
     Export: 
       Name: newVPC-id
