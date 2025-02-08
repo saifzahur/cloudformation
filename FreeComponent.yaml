@@ -1,0 +1,32 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: This templace contains all free resource so that the resources can be kept running without any cost 
+
+Resources:
+  newVPC:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: 10.10.0.0/16
+      EnableDnsSupport: true
+
+  subnetPublic1:
+    Type: AWS::EC2::Subnet
+    Properties:
+      AvailabilityZone: us-east-1a
+      VpcId: !Ref newVPC
+      CidrBlock: 10.10.1.0/24
+  
+  Ec2EndPoint:
+    Type: AWS::EC2::InstanceConnectEndpoint
+    Properties:
+      SubnetId: !Ref subnetPublic1
+
+outputs:
+  VPCid:
+    Value: !Ref newVPC
+    Export: 
+      Name: newVPC-id
+
+  publicSubnet:
+    Value: !Ref subnetPublic1
+    Export:
+      Name: publicSubnet-id

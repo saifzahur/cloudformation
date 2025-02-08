@@ -1,0 +1,11 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: This file contains the resource that free in year 1 withh limited scale. Can be kept on for 1st year
+
+Resources: 
+
+  myEC2Instance:
+    Type: AWS::EC2::Instance
+    Properties:
+      ImageId: ami-0453ec754f44f9a4a
+      InstanceType: t2.micro
+      SubnetId: !ImportValue publicSubnet-id
