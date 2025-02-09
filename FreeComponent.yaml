@@ -19,10 +19,21 @@ Resources:
     Type: AWS::EC2::InstanceConnectEndpoint
     Properties:
       SubnetId: !Ref subnetPublic1
+  
+  publicSG:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupName: PublicSG
+      GroupDescription: Public Security Group
+      VpcId: !Ref newVPC
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 80
+          ToPort: 80
+          CidrIp: 0.0.0.0/0
 
 Outputs:
   VPCid:
-
     Value: !Ref newVPC
     Export: 
       Name: newVPC-id
@@ -31,3 +42,8 @@ Outputs:
     Value: !Ref subnetPublic1
     Export:
       Name: publicSubnet-id
+
+  publicSG1:
+    Value: !Ref publicSG
+    Export:
+      Name: publicSG-sg
