@@ -10,5 +10,5 @@ Resources:
       InstanceType: t2.micro
       SubnetId: !ImportValue publicSubnet-id
       Tags:
-       - Key: Nmae
+       - Key: Name
          Value: App server
