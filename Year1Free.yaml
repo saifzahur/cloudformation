@@ -9,3 +9,6 @@ Resources:
       ImageId: ami-0453ec754f44f9a4a
       InstanceType: t2.micro
       SubnetId: !ImportValue publicSubnet-id
+      Tags:
+       - Key: Nmae
+         Value: App server
